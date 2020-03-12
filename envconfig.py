@@ -4,7 +4,11 @@ import functools
 
 import sys
 if sys.version_info[0] == 2:
-    from ConfigParser import ConfigParser, NoSectionError, NoOptionError
+    try:
+        import configparser as ConfigParser
+    except ImportError:
+        import ConfigParser
+    # from ConfigParser import ConfigParser, NoSectionError, NoOptionError
 else:
     from configparser import ConfigParser, NoSectionError, NoOptionError
     from configparser import BasicInterpolation
